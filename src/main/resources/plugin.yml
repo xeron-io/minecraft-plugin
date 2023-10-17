@@ -1,0 +1,9 @@
+name: Xeron
+version: 1.0
+api-version: 1.13
+author: Zenthic
+main: io.xeron.zenthic.plugin.Plugin
+
+commands:
+  redeem:
+    description: Redeem your transaction code
