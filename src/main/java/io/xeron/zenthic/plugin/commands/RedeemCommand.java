@@ -1,6 +1,7 @@
 package io.xeron.zenthic.plugin.commands;
 
 import com.google.gson.Gson;
+import io.xeron.zenthic.plugin.Plugin;
 import io.xeron.zenthic.plugin.models.ResponseModel;
 import io.xeron.zenthic.plugin.utils.Hmac;
 import okhttp3.FormBody;
@@ -20,8 +21,15 @@ public class RedeemCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (sender instanceof Player) {
-            String privateKey = "4a2920fe-7aa3-43be-9c47-5c1fe8e3826f";
-            String apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ4ZXJvbi5pbyIsImlkX3NlbGxlciI6N30.ICtC1xA5VrHYo2IXZVmtqqaMAP9cicBdhYtcHNSqB8Y";
+            Plugin plugin = Plugin.getPlugin(Plugin.class);
+            String privateKey = plugin.getCustomConfig().getString("privateKey");
+            String apiKey = plugin.getCustomConfig().getString("apiKey");
+
+            if (privateKey == null || apiKey == null) {
+                sender.sendMessage("You must set your private key and API key in the config.yml file.");
+                return false;
+            }
+
             String transactionId = args[0];
             String signature = Hmac.calcHmacSha256(privateKey, transactionId);
 
