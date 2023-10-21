@@ -1,2 +1,5 @@
+#
+# Get your keys in https://dashboard.xeron.io
+#
 privateKey: 'change-with-your-key'
 apiKey: 'change-with-your-key'
