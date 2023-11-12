@@ -25,6 +25,11 @@ public class RedeemCommand implements CommandExecutor {
             String privateKey = plugin.getCustomConfig().getString("privateKey");
             String apiKey = plugin.getCustomConfig().getString("apiKey");
 
+            if (args.length < 1) {
+                sender.sendMessage("\u00A7c" + "Usage: /claim [reference]");
+                return false;
+            }
+
             if (privateKey == null || apiKey == null) {
                 sender.sendMessage("You must set your private key and API key in the config.yml file.");
                 return false;
