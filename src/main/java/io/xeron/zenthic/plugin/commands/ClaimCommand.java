@@ -17,7 +17,7 @@ import org.json.simple.JSONObject;
 
 import java.io.IOException;
 
-public class RedeemCommand implements CommandExecutor {
+public class ClaimCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
@@ -27,7 +27,7 @@ public class RedeemCommand implements CommandExecutor {
             String apiKey = plugin.getCustomConfig().getString("apiKey");
 
             if (args.length < 1) {
-                sender.sendMessage("\u00A7c" + "Usage: /redeem [reference]");
+                sender.sendMessage("\u00A7c" + "Usage: /claim [reference]");
                 return false;
             }
 

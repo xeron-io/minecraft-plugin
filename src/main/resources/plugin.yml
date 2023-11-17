@@ -5,5 +5,5 @@ author: Zenthic
 main: io.xeron.zenthic.plugin.Plugin
 
 commands:
-  redeem:
-    description: Redeem your transaction code
+  claim:
+    description: Claim your transaction code

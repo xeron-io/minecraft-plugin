@@ -1,6 +1,6 @@
 package io.xeron.zenthic.plugin;
 
-import io.xeron.zenthic.plugin.commands.RedeemCommand;
+import io.xeron.zenthic.plugin.commands.ClaimCommand;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -16,13 +16,13 @@ public class Plugin extends JavaPlugin {
     @Override
     public void onEnable() {
         createCustomConfig();
-        this.getCommand("redeem").setExecutor(new RedeemCommand());
-        getLogger().info("Added the 'redeem' command.");
+        this.getCommand("claim").setExecutor(new ClaimCommand());
+        getLogger().info("Added the 'claim' command.");
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("Disabled the 'redeem' command.");
+        getLogger().info("Disabled the 'claim' command.");
     }
 
     public FileConfiguration getCustomConfig() {
