@@ -3,6 +3,7 @@ package io.xeron.zenthic.plugin.commands;
 import com.google.gson.Gson;
 import io.xeron.zenthic.plugin.Plugin;
 import io.xeron.zenthic.plugin.models.ResponseModel;
+import io.xeron.zenthic.plugin.utils.GetSlots;
 import io.xeron.zenthic.plugin.utils.Hmac;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -38,11 +39,15 @@ public class RedeemCommand implements CommandExecutor {
             String transactionId = args[0];
             String signature = Hmac.calcHmacSha256(privateKey, transactionId);
 
+            // get how many empty slots the player has
+            int currentEmptySlots = GetSlots.getEmptySlots((Player) sender);
+
             OkHttpClient client = new OkHttpClient();
             FormBody body = new FormBody.Builder()
                     .add("apiKey", apiKey)
                     .add("transactionId", transactionId)
                     .add("signature", signature)
+                    .add("minSlot", String.valueOf(currentEmptySlots))
                     .build();
 
             Request request = new Request.Builder()
