@@ -27,7 +27,7 @@ public class RedeemCommand implements CommandExecutor {
             String apiKey = plugin.getCustomConfig().getString("apiKey");
 
             if (args.length < 1) {
-                sender.sendMessage("\u00A7c" + "Usage: /claim [reference]");
+                sender.sendMessage("\u00A7c" + "Usage: /redeem [reference]");
                 return false;
             }
 
